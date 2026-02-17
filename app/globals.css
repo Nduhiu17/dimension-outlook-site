@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colors - Dark theme with blue-green accent */
+    --background: 10 10 10;
+    --foreground: 255 255 255;
+    --primary: 34 197 94;
+    --primary-dark: 22 163 74;
+    --secondary: 30 30 35;
+    --accent: 34 197 94;
+    --muted: 100 100 110;
+    --border: 40 40 45;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-white font-sans antialiased;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair font-bold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl lg:text-7xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-4xl;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 bg-accent text-black font-semibold rounded-lg transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:shadow-accent/50;
+  }
+
+  .text-accent {
+    color: rgb(var(--primary));
+  }
+
+  .bg-accent {
+    background-color: rgb(var(--primary));
+  }
+
+  .border-accent {
+    border-color: rgb(var(--primary));
+  }
+
+  .section-container {
+    @apply w-full px-4 md:px-8 lg:px-16 py-12 md:py-20;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, rgb(var(--foreground)), rgb(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero section enhancements */
+  .hero-text-animate {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .hero-button {
+    @apply relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-accent/50;
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--primary-dark));
+}
