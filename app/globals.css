@@ -84,11 +84,124 @@
   .accent-glow {
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
   }
+
+  /* Responsive Image Container - ensures images fill width and maintain aspect ratio */
+  .img-container {
+    @apply relative w-full overflow-hidden;
+  }
+
+  .img-responsive {
+    @apply w-full h-auto object-cover;
+  }
+
+  /* Mobile-first responsive image heights */
+  .img-height-sm {
+    @apply h-48 sm:h-56 md:h-72 lg:h-96 xl:h-full;
+  }
+
+  .img-height-md {
+    @apply h-56 sm:h-64 md:h-80 lg:h-96 xl:h-full;
+  }
+
+  /* Portfolio and card responsive sizing */
+  .portfolio-item {
+    @apply relative w-full overflow-hidden rounded-lg;
+    aspect-ratio: 4/3;
+  }
+
+  @media (max-width: 640px) {
+    .portfolio-item {
+      min-height: 200px;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .portfolio-item {
+      min-height: 250px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .portfolio-item {
+      min-height: 300px;
+    }
+  }
+
+  /* Service card responsive sizing */
+  .service-card {
+    @apply relative w-full overflow-hidden rounded-lg border border-border;
+  }
+
+  @media (max-width: 640px) {
+    .service-card {
+      min-height: 240px;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .service-card {
+      min-height: 280px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .service-card {
+      min-height: 320px;
+    }
+  }
+
+  /* Ensure images fully fill their containers while maintaining aspect ratio */
+  .img-fill-responsive {
+    @apply w-full h-full object-cover;
+  }
+
+  /* Hero image responsive */
+  .hero-carousel-image {
+    @apply w-full h-full object-cover;
+  }
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Mobile-first responsive design - 100% width on all screens */
+@media (max-width: 640px) {
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  .section-container {
+    @apply px-4 py-12;
+  }
+  
+  .portfolio-item,
+  .service-card {
+    @apply w-full;
+  }
+}
+
+/* Tablet screens */
+@media (min-width: 641px) and (max-width: 1024px) {
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  .section-container {
+    @apply px-6 py-16;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  .section-container {
+    @apply px-16 py-20;
+  }
 }
 
 /* Custom scrollbar */

@@ -64,7 +64,7 @@ export default function Hero() {
     return () => clearInterval(timer)
   }, [isAutoplay])
 
-  const handleIndicatorClick = (index) => {
+  const handleIndicatorClick = (index: number) => {
     setCurrentIndex(index)
     setIsAutoplay(false)
     

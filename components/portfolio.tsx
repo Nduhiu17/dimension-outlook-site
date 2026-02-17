@@ -73,7 +73,7 @@ export default function Portfolio() {
       {/* Portfolio Grid */}
       <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full"
       >
         {filtered.map((item, index) => (
           <motion.div
@@ -84,15 +84,15 @@ export default function Portfolio() {
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
             viewport={{ once: true, margin: '-50px' }}
-            className="group relative overflow-hidden rounded-lg h-64 md:h-72 cursor-pointer"
+            className="portfolio-item group cursor-pointer"
           >
             {/* Image */}
             <Image
               src={item.image}
               alt={item.title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover group-hover:scale-110 transition-transform duration-500"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="img-fill-responsive group-hover:scale-110 transition-transform duration-500"
               quality={80}
               placeholder="empty"
             />
@@ -101,11 +101,11 @@ export default function Portfolio() {
             <motion.div
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-end justify-start p-6 transition-all duration-300"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-end justify-start p-4 sm:p-6 transition-all duration-300 opacity-100 sm:opacity-0 hover:opacity-100"
             >
               <div>
-                <p className="text-accent text-sm font-semibold mb-2">{item.category}</p>
-                <h3 className="text-white text-lg font-playfair font-bold">{item.title}</h3>
+                <p className="text-accent text-xs sm:text-sm font-semibold mb-2">{item.category}</p>
+                <h3 className="text-white text-base sm:text-lg font-playfair font-bold">{item.title}</h3>
               </div>
             </motion.div>
           </motion.div>

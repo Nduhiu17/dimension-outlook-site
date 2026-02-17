@@ -24,7 +24,7 @@ export default function Header() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="h-10 w-auto"
+            className="h-8 sm:h-10 w-auto"
           >
             <Image 
               src="/logo.jpeg" 
@@ -33,7 +33,7 @@ export default function Header() {
               height={40}
               priority
               quality={85}
-              className="h-10 w-auto"
+              className="h-8 sm:h-10 w-auto object-contain"
             />
           </motion.div>
         </Link>
