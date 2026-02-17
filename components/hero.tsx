@@ -144,9 +144,11 @@ export default function Hero() {
               src={service.image}
               alt={service.title}
               fill
+              sizes="100vw"
               className="object-cover"
               priority={index === 0}
-              quality={90}
+              quality={85}
+              placeholder="empty"
             />
           </motion.div>
         ))}

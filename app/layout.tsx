@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     description: 'Premium branding and outdoor advertisement services',
     type: 'website',
   },
+  icons: {
+    icon: [{ url: '/favicon.ico', sizes: 'any' }],
+  },
 }
 
 export const viewport: Viewport = {
@@ -27,6 +30,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Preload critical fonts */}
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" />
+        {/* Preload critical images */}
+        <link rel="preload" as="image" href="/signage/1.jpeg" type="image/jpeg" />
+      </head>
       <body className="bg-black text-white">
         {children}
       </body>

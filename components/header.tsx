@@ -32,6 +32,7 @@ export default function Header() {
               width={120}
               height={40}
               priority
+              quality={85}
               className="h-10 w-auto"
             />
           </motion.div>
