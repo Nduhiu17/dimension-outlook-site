@@ -125,13 +125,13 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-black">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background Images Carousel */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full h-full">
         {services.map((service, index) => (
           <motion.div
             key={index}
-            className="absolute inset-0"
+            className="absolute inset-0 w-full h-full"
             initial={{ opacity: 0 }}
             animate={{
               opacity: index === currentIndex ? 1 : 0,
@@ -145,7 +145,7 @@ export default function Hero() {
               alt={service.title}
               fill
               sizes="100vw"
-              className="object-cover"
+              className="object-cover w-full h-full absolute inset-0"
               priority={index === 0}
               quality={85}
               placeholder="empty"
@@ -156,7 +156,7 @@ export default function Hero() {
 
       {/* Advanced Gradient Overlay - creating visual depth */}
       <motion.div
-        className="absolute inset-0 z-1"
+        className="absolute inset-0 z-10 w-full h-full"
         animate={{
           background: [
             'linear-gradient(135deg, rgba(10, 10, 10, 0.75) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.75) 100%)',
@@ -185,7 +185,7 @@ export default function Hero() {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 w-full h-full flex items-center justify-center px-4 md:px-8">
+      <div className="relative z-20 w-full h-full flex items-center justify-center px-4 md:px-8">
         <motion.div
           className="text-center max-w-4xl mx-auto"
           initial={{ opacity: 0 }}

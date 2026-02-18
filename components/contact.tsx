@@ -41,7 +41,7 @@ export default function Contact() {
 
   const contactInfo = [
     { icon: '📍', label: 'Address', value: 'Nairobi, Kenya' },
-    { icon: '📧', label: 'Email', value: 'info@dynamicoutlook.com' },
+    { icon: '📧', label: 'Email', value: 'info@dimension.co.ke' },
     { icon: '📱', label: 'Phone', value: '+254717388209' },
     { icon: '🕐', label: 'Hours', value: 'Mon-Fri: 9AM-6PM, Sat: 10AM-4PM' },
   ]

@@ -22,6 +22,7 @@ const categories = ['All', 'Signage', 'Screen Printing', 'Laser Engraving', 'Lar
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [openItem, setOpenItem] = useState<number | null>(null)
 
   const filtered = activeCategory === 'All' 
     ? portfolioItems 
@@ -75,41 +76,52 @@ export default function Portfolio() {
         layout
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full"
       >
-        {filtered.map((item, index) => (
-          <motion.div
-            key={item.id}
-            layout
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            viewport={{ once: true, margin: '-50px' }}
-            className="portfolio-item group cursor-pointer"
-          >
-            {/* Image */}
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="img-fill-responsive group-hover:scale-110 transition-transform duration-500"
-              quality={80}
-              placeholder="empty"
-            />
-            
-            {/* Overlay */}
+        {filtered.map((item, index) => {
+          const isOpen = openItem === item.id
+          return (
             <motion.div
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-end justify-start p-4 sm:p-6 transition-all duration-300 opacity-100 sm:opacity-0 hover:opacity-100"
+              key={item.id}
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              viewport={{ once: true, margin: '-50px' }}
+              className="portfolio-item group cursor-pointer"
+              onClick={() => setOpenItem(isOpen ? null : item.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setOpenItem(isOpen ? null : item.id)
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-expanded={isOpen}
             >
-              <div>
-                <p className="text-accent text-xs sm:text-sm font-semibold mb-2">{item.category}</p>
-                <h3 className="text-white text-base sm:text-lg font-playfair font-bold">{item.title}</h3>
+              {/* Image */}
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className="img-fill-responsive group-hover:scale-110 transition-transform duration-500"
+                quality={80}
+                placeholder="empty"
+              />
+              
+              {/* Overlay */}
+                <div
+                  className={`absolute inset-0 bg-black/60 backdrop-blur-sm flex items-end justify-start p-4 sm:p-6 transition-all duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 sm:opacity-0'} group-hover:opacity-100 hover:opacity-100`}
+                >
+                <div>
+                  <p className="text-accent text-xs sm:text-sm font-semibold mb-2">{item.category}</p>
+                  <h3 className="text-white text-base sm:text-lg font-playfair font-bold">{item.title}</h3>
+                </div>
               </div>
             </motion.div>
-          </motion.div>
-        ))}
+          )
+        })}
       </motion.div>
     </section>
   )
